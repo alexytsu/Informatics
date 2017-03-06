@@ -54,29 +54,32 @@ scores = [lion_score, goat_score, snake_score]
 while keepGoing(scores):
     lowest = min(scores)
     highest = max(scores)
+
     if lion_score == highest:
         lion_score -= 1
         if snake_score == lowest:
             snake_score += 1
         elif goat_score == lowest:
             goat_score += 1
+
     elif snake_score == highest:
         snake_score -= 1
         if goat_score == lowest:
             goat_score += 1
         elif lion_score == lowest:
             lion_score += 1
+
     elif goat_score == highest:
         goat_score -= 1
         if snake_score == lowest:
             snake_score += 1
         elif lion_score == lowest:
             lion_score += 1
+
     scores = [lion_score, goat_score, snake_score]
 
-
-
 scores = [lion_score, goat_score, snake_score]
+print(scores)
 fw = open('chimout.txt', 'w')
 fw.write(str(min(scores)))
 fw.close()
