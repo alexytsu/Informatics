@@ -1,0 +1,11 @@
+aaaaaa
+bbbbbb
+cccccc
+
+aa
+  bb 
+    cc
+
+if max(Score) >= min(score) + 2 
+max (score) - 1, min(score) + 1
+:w
