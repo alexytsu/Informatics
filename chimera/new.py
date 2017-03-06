@@ -42,24 +42,41 @@ while chim_length < length:
     chim_length += 1
 
 
-scores = [lion_score, goat_score, snake_score]
-
 def keepGoing(sc):
     if max(sc) > min(sc)+1:
-        return true
+        return True
     else:
-        return false
+        return False
 
 """if the max is like 2 above the min, take one from max and add one to min"""
 
+scores = [lion_score, goat_score, snake_score]
 while keepGoing(scores):
     lowest = min(scores)
     highest = max(scores)
-    if lion_score = 
-        lion_score
+    if lion_score == highest:
+        lion_score -= 1
+        if snake_score == lowest:
+            snake_score += 1
+        elif goat_score == lowest:
+            goat_score += 1
+    elif snake_score == highest:
+        snake_score -= 1
+        if goat_score == lowest:
+            goat_score += 1
+        elif lion_score == lowest:
+            lion_score += 1
+    elif goat_score == highest:
+        goat_score -= 1
+        if snake_score == lowest:
+            snake_score += 1
+        elif lion_score == lowest:
+            lion_score += 1
+    scores = [lion_score, goat_score, snake_score]
+
+
 
 scores = [lion_score, goat_score, snake_score]
 fw = open('chimout.txt', 'w')
 fw.write(str(min(scores)))
 fw.close()
-
