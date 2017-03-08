@@ -59,22 +59,28 @@ while keepGoing(scores):
         lion_score -= 1
         if snake_score == lowest:
             snake_score += 1
+            goat_score -= 1
         elif goat_score == lowest:
             goat_score += 1
+            snake_score -= 1
 
     elif snake_score == highest:
         snake_score -= 1
         if goat_score == lowest:
             goat_score += 1
+            lion_score -= 1
         elif lion_score == lowest:
             lion_score += 1
+            goat_score -= 1
 
     elif goat_score == highest:
         goat_score -= 1
         if snake_score == lowest:
             snake_score += 1
+            lion_score -= 1
         elif lion_score == lowest:
             lion_score += 1
+            snake_score -= 1
 
     scores = [lion_score, goat_score, snake_score]
 
