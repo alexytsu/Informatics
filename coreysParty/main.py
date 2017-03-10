@@ -1,3 +1,4 @@
+## read in data
 fr = open('partyin.txt', 'r')
 params = fr.readline().split()
 params = [int(i) for i in params]
@@ -8,7 +9,9 @@ for x in range(params[1]):
     friendships.append(me)
 fr.close()
 
+## generate dictionary of friends
 friendlist = {}
+
 for x in friendships:
     a = x[0]
     b = x[1]
@@ -33,8 +36,7 @@ def keep_removing():
             return True
     return False 
 
-while(keep_removing):
-    print("hi")
+while(keep_removing()):
     for x in friendlist:
         if len(friendlist[x]) < a_req:
             del friendlist[x]
@@ -43,4 +45,6 @@ while(keep_removing):
                     friendlist[y].remove(x)
             break
 
-print(friendlist)
+fw = open('partyout.txt', 'w')
+fw.write(str(len(friendlist)))
+fw.close()
