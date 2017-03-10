@@ -39,6 +39,8 @@ for x in unique:
     elif b == mostPopular:
         popular.append(x)
 
+print(x)
+
 fw = open('listout.txt', 'w')
 for x in popular:
     fw.write('%d\n' % x)
