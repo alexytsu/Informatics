@@ -7,20 +7,16 @@ n_plots = int(fr.readline())
 plots = fr.read().split()
 fr.close()
 plots = [int(i) for i in plots]
+rplots = plots[::-1]
 fences = n_plots -1
+kept = 0
 
-counter = 0
-for x in range(n_plots):
-    a = x
-    b = n_plots - (x+1)
-    if plots[a] == plots[b]:
-        print(a,b)
-        fences -= 1 
-        counter += 1
-    else:
-        removed = 0
-        for x in range(fences):
+def keepGoing():
+    for x in range(len(rplots)):
+        if rplots[x] != plots[x]:
+            return True
+    return False
 
-            
+while (keepGoing()):
+    for x in range(len(rplots)):
 
-print(fences)
