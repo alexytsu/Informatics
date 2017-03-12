@@ -9,11 +9,18 @@ fr.close()
 plots = [int(i) for i in plots]
 fences = n_plots -1
 
+counter = 0
 for x in range(n_plots):
     a = x
     b = n_plots - (x+1)
     if plots[a] == plots[b]:
         print(a,b)
         fences -= 1 
+        counter += 1
+    else:
+        removed = 0
+        for x in range(fences):
+
+            
 
 print(fences)
