@@ -11,12 +11,15 @@ rplots = plots[::-1]
 fences = n_plots -1
 kept = 0
 
-def keepGoing():
-    for x in range(len(rplots)):
-        if rplots[x] != plots[x]:
-            return True
-    return False
+remove = False
 
-while (keepGoing()):
-    for x in range(len(rplots)):
+for x in range(len(rplots)):
+    if rplots[x] != plots[x]:
+         remove = True
 
+fw = open('farmout.txt', 'w')
+if remove:
+    fw.write("1")
+else: 
+    fw.write("0")
+fw.close()
