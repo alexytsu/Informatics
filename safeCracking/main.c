@@ -25,7 +25,7 @@ int main(int argc, char *argv[]){
     for(int shift = 0; shift < code_length - sub_length; i ++){
         for(int i = 0; i < sub_length; i ++){
             
-            
+                        
 
         }
     }
