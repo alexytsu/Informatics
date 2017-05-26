@@ -12,6 +12,53 @@ int main(void){
 	fclose(fin);
     printf("\n");
 
+    /*
+    int plotsum[plots];
+    int rplotsum[plots];
+    for(int i = 0; i < plots; i ++){
+        int sum = 0;
+        int rsum = 0;
+        for(int j = i; j>=0; j--){
+            sum += plotsizes[j];
+            rsum += rplotsizes[j];
+        }
+        plotsum[i] = sum;
+        rplotsum[i] = rsum;
+    }
+    
+    printf("Plotsum: ");
+    for(int i = 0; i < plots; i ++){
+        printf("%d ", plotsum[i]);
+    }
+    printf("\n");
+
+    printf("Rplotsum: ");
+    for(int i = 0; i < plots; i ++){
+        printf("%d ", rplotsum[i]);
+    }
+    printf("\n");
+
+    int kept_fences = 0;
+    for(int i = 0; i < plots; i ++){
+        int keep = 0;    
+        for(int j = 0; j < plots; j ++){
+            if(plotsum[j] == rplotsum[i]){
+                keep = 1;
+            }
+        }
+        if(keep) kept_fences += 1;
+    }
+    kept_fences --;
+
+    int fences = plots-1;
+    printf("Kept fences = %d\n", kept_fences);
+    printf("Removed fences = %d\n", fences-kept_fences);
+
+    FILE *fout = fopen("farmout.txt", "w");
+    fprintf(fout, "%d", fences-kept_fences);
+    fclose(fout);
+    */
+    /*
     int fences = plots - 1;
     int fences_kept = 0;
 
@@ -44,25 +91,26 @@ int main(void){
     fences_kept --;
     int removed = fences - fences_kept;
     printf("%d\n", removed);
+    */
 
-    /*
-	int total_land = 0;
-	for(int i = 0; i < plots; i ++){
-		total_land += plotsizes[i];
-	}
-	total_land += plots-1;
+    int plotsum = 0;
+    for(int i = 0; i < plots; i ++){
+        plotsum += plotsizes[i];
+    }
+	int total_land = 2*plotsum-1;
 
 	//[000100001]
 	int fence_map[total_land];
 	for(int i = 0; i < total_land; i ++){
-		fence_map[i]= 0;
+		if(i%2)fence_map[i]= 0;
+        else fence_map[i] = 1;
 	}
 
-	int fence_pos = -1;
-	for(int i = 0; i < plots; i ++){
-		fence_pos += 1 + plotsizes[i];
-		fence_map[fence_pos] = 1;
-	}
+    int last_fence_pos = -1;
+    for(int i = 0; i < plots; i ++){
+        last_fence_pos += 2*plotsizes[i];
+        fence_map[last_fence_pos] = 2;
+    }
    
     printf("FARM MAP: ");
     for(int i = 0; i < total_land; i ++){
@@ -70,19 +118,34 @@ int main(void){
     }
     printf("\n");
 
-    int i = 0;
-    int j = total_land -1;
-    int removed = 0;
-    while(j >= 0 && i < total_land){
-        if(fence_map[i] == 1 && fence_map[j] == 0){
-            removed ++;
-        }
-        i++;
-        j--;
+    /*
+    int rfence_map[total_land];
+    for(int i = 0; i < total_land; i++){
+        rfence_map[i] = fence_map[total_land - 1 - i]; 
     }
     */
-    
+    /*
+    printf("FARM MAP: ");
+    for(int i = 0; i < total_land; i ++){
+        printf("%d ", rfence_map[i]);
+    }
+    printf("\n");
+    int fences_kept = 0;
+    */
+    int fences_kept = 0;
+    printf("FARM MAP: ");
+    for(int i = 0; i < total_land; i ++){
+        if(fence_map[i] == 2 && fence_map[total_land - i -1] == 2){
+            fences_kept ++;
+            printf("X ");
+        }else{
+            printf("0 ");
+        }
+    }
+    printf("fences_kept %d\n", fences_kept);
+    int fences = plots - 1;
+    int fences_removed = fences- fences_kept;
     FILE *fout = fopen("farmout.txt", "w");
-    fprintf(fout, "%d", removed);
+    fprintf(fout, "%d", fences_removed);
     fclose(fout);
 }
