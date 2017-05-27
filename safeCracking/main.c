@@ -20,15 +20,7 @@ int main(int argc, char *argv[]){
         fscanf(fin, "%d", &sub[i]);
     }
 
-    int shift = 0;
-
-    for(int shift = 0; shift < code_length - sub_length; i ++){
-        for(int i = 0; i < sub_length; i ++){
-            
-                        
-
-        }
-    }
+    
 
     return 0;
 }
